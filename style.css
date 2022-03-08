@@ -4,7 +4,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-size: 1em;
+    font-size: 1rem;
 }
 
 body{
@@ -57,14 +57,14 @@ header .menu-bar p{
 }
 
 .hero-image{
-    margin-top: calc(6em - 11%);
-    margin-bottom: calc(.8em - 3%);
+    margin-top: max(1.5em, calc(8em - 15%));
+    margin-bottom: max(0em, calc(7em - 17%));
 }
 
 .hero-image .img-container{
     position: relative;
     display: flex;
-    justify-content: end;
+    justify-content: center;
 }
 
 
@@ -96,7 +96,7 @@ header .menu-bar p{
 }
 
 .hero-text h1{
-    font-size: min(11.5vw, 3.3em);
+    font-size: clamp(2.9rem, 8vw, 3.5rem);
     font-family: 'Playfair Display', serif;
     color: black;
 }
@@ -137,8 +137,10 @@ header .menu-bar p{
 footer{
     margin-top: 3em;
     display: flex;
-    flex-direction: column;
-    gap: 1em;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 3em;
 }
 
 footer .socials{
@@ -181,12 +183,6 @@ footer .question p:nth-child(1){
     .hero-text input[type=text]{
         width: min(50%, 22em);
     }
-
-    footer{
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-    }
 }
 
 @media (min-width: 1024px){
@@ -204,10 +200,13 @@ footer .question p:nth-child(1){
 
     .hero-image{
         display: flex;
-        justify-content: end;
         flex: 1;
         margin-top: unset;
         margin-bottom: unset;
+    }
+
+    .hero-image .img-container{
+        justify-content: end;
     }
 
     .hero-text{
