@@ -14,12 +14,6 @@ body{
     padding: min(5em,5%) min(6em,5%);
 }
 
-header{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
 header .logo-wrapper{
     display: flex;
     gap: 1em;
@@ -34,6 +28,11 @@ header .logo-wrapper{
     border: none;
 }
 
+header .mobile-header{
+    display: flex;
+    justify-content: space-between;
+}
+
 header nav, header .account{
     display: none;
 }
@@ -43,18 +42,53 @@ header nav a, header .account a{
     text-decoration: none;
 }
 
-header .account .button{
-    background-color: #4C74EC;
-    color: white;
-    padding: 1.1em;
+header nav .link:hover, header .account .link:hover{
+    color: #ECA95D;
+    font-weight: bold;
+}
+
+
+header .set-display{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    background-color: #f8e5d2;;
+    padding: 1em 0;
     border-radius: 5px;
+}
+
+header .set-display:nth-child(2){
+    margin-top: 1em;
+}
+
+header .account .button{
+    color: #4C74EC;
+}
+
+header .account .button:hover{
+    font-weight: bold;
 }
 
 header .menu-bar p{
     padding: 2px 13px;
     background-color: black;
     margin: 3px;
+    transition: all .2s ease-in-out;
+    border-radius: 3px;
+    cursor: pointer;
 }
+.animate-menu-bar p:nth-child(1){
+    transform: rotate(-45deg) translate(-4px, 6px);
+}
+.animate-menu-bar p:nth-child(2){
+    opacity: 0;
+}
+.animate-menu-bar p:nth-child(3){
+    transform: rotate(45deg) translate(-4px, -6px);
+    
+}
+
 
 .hero-image{
     margin-top: max(1.5em, calc(8em - 15%));
@@ -126,6 +160,7 @@ header .menu-bar p{
     color: white;
     border-radius: 5px;
     font-family: 'Lato', sans-serif;
+    cursor: pointer;
 }
 
 .hero-text span{
@@ -188,7 +223,24 @@ footer .question p:nth-child(1){
 @media (min-width: 1024px){
 
     body{
-        padding: 2em 10%;
+        padding: 2em 10% 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    header{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    header .account .button{
+        background-color: #4C74EC;
+        color: white;
+        padding: 1.1em;
+        border-radius: 5px;
     }
 
     main{
@@ -196,6 +248,7 @@ footer .question p:nth-child(1){
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
+        flex: 2;
     }
 
     .hero-image{
@@ -209,18 +262,86 @@ footer .question p:nth-child(1){
         justify-content: end;
     }
 
+    .hero-image img:nth-child(3){
+        animation: rotate3 1s forwards;
+    }
+    @keyframes rotate3{
+        0%{
+            transform: rotate(0);
+        }
+        100%{
+            transform: rotate(-15deg);
+        }
+    }
+    
+    .hero-image img:nth-child(2){
+        animation: rotate2 1s forwards;
+    }
+    @keyframes rotate2{
+        0%{
+            transform: rotate(0);
+        }
+        100%{
+            transform: rotate(-30deg);
+        }
+    }
+    
+    .hero-image img:nth-child(1){
+        animation: rotate1 1s forwards;
+    }
+    @keyframes rotate1{
+        0%{
+            transform: rotate(0);
+        }
+        100%{
+            transform: rotate(-45deg);
+        }
+    }
+
     .hero-text{
         flex: 1;
+        animation: fadeIn 1s forwards;
+    }
+
+    @keyframes fadeIn{
+        0%{
+            opacity: 0;
+            transform: translateY(-1em);
+        }
+        100%{
+            opacity: 1;
+            transform: translateY(0em);
+        }
+    }
+    
+
+    header .account .button:hover{
+        font-weight: normal;
     }
 
     header .menu-bar{
         display: none;
     }
 
-    header nav, header .account{
+    header nav, header .account, header .set-display{
         display: flex;
-        align-items: center;
         column-gap: 1.5em;
+        align-items: center;
+        /* reverting the styling for mobile navigation*/
+        flex-direction: row;
+        background-color: unset;
+        padding: unset;
+
+    }
+
+    header .set-display:nth-child(2){
+        margin-top: 0em;
+    }
+
+    footer{
+        flex: 2;
+        align-items: flex-end;
+        padding-bottom: 2em;
     }
 
 }
