@@ -53,9 +53,7 @@ header .set-display{
     flex-direction: column;
     align-items: center;
     gap: 1em;
-    background-color: #f8e5d2;;
     padding: 1em 0;
-    border-radius: 5px;
 }
 
 header .set-display:nth-child(2){
